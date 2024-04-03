@@ -25,13 +25,13 @@ export const register = async (req, res) => {
 };
 export const login = async (req, res) => {
 
-  const { email, password } = req.body;
+  const { username, password } = req.body;
   const age = 1000 * 24 * 60 * 60 * 30 ; // 30 days in seconds
   try {
     // checking the user is exist or not
     const user = await prisma.user.findUnique({
       where: {
-        email,
+        username,
       },
     });
 
