@@ -26,6 +26,7 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
 
   const { email, password } = req.body;
+  const age = 1000 * 24 * 60 * 60 * 30 ; // 30 days in seconds
   try {
     // checking the user is exist or not
     const user = await prisma.user.findUnique({
@@ -55,7 +56,8 @@ export const login = async (req, res) => {
     res
       .cookie("user", token, {
         httpOnly: true,
-        //   maxAge: "30d",
+          maxAge: age,
+        // secure: true
       })
       .status(200)
       .json({
@@ -63,7 +65,6 @@ export const login = async (req, res) => {
       });
   } catch (error) {
     res.status(500).json({ message: "Failed to Login" });
-
   }
 };
 export const logout = async (req, res) => {
