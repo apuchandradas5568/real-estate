@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./login.scss";
 import { Link, useNavigate } from "react-router-dom";
 import apiRequest from "../../lib/apiRequest";
+import { AuthContext } from "../../context/AuthContext";
 
 function Login() {
 
+  const {updateUser} = useContext(AuthContext)
 
   const [error, setError] = useState("")
 const [isLoading, setIsLoading] = useState(false)
@@ -26,8 +28,8 @@ const handleSubmit = async (e) =>{
       username, password
     })
 
-    console.log(res);
-
+    // localStorage.setItem("user", JSON.stringify(res.data))
+    updateUser(res.data)
     navigate("/")
     setIsLoading(false)
   } catch (error) {
@@ -44,8 +46,8 @@ const handleSubmit = async (e) =>{
         <form onSubmit={handleSubmit}>
           <h1>Welcome back</h1>
           {error && <span className="errorMessage">{error}</span>}
-          <input name="username" type="text" placeholder="Username" />
-          <input name="password" type="password" placeholder="Password" />
+          <input name="username" required minLength={3} maxLength={20} type="text" placeholder="Username" />
+          <input name="password" type="password" required placeholder="Password" />
           <button disabled={isLoading} >{isLoading ? "Loading......" : "Login"}</button>
           <Link to="/register">{"Don't"} you have an account?</Link>
         </form>
