@@ -2,6 +2,7 @@
   height: 100%;
   display: flex;
 
+
   .formContainer {
     flex:3;
     display: flex;
@@ -50,6 +51,12 @@
     .avatar{
       width: 50%;
       object-fit: cover;
+      border-radius: 1rem;
     }
+  }
+
+  .success-text{
+    color: green;
+    text-align: center;
   }
 }
