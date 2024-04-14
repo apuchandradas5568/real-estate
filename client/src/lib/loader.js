@@ -13,5 +13,4 @@ export const listPageLoader = async ({ request, params }) => {
     return defer({
       postResponse: postPromise
     });
-  };
-  
+};
