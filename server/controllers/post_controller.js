@@ -5,7 +5,6 @@ import jwt from "jsonwebtoken";
 export const getPosts = async (req, res) => {
   const query = req.query;
 
-
   try {
     const posts = await prisma.post.findMany({
       where: {
@@ -19,7 +18,8 @@ export const getPosts = async (req, res) => {
         },
       },
     });
-    res.status(200).json(posts);
+
+      res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({ message: "Failed to fetch the posts" });
   }
@@ -33,12 +33,12 @@ export const getPost = async (req, res) => {
       include: {
         postDetail: true,
         user: {
-            select:{
-                username: true,
-                avatar: true
-            }
-        }
-      }
+          select: {
+            username: true,
+            avatar: true,
+          },
+        },
+      },
     });
     res.status(200).json(post);
   } catch (error) {
@@ -55,8 +55,8 @@ export const addPost = async (req, res) => {
         ...body.postData,
         userId: tokenUserId,
         postDetail: {
-            create: body.postDetail
-        }
+          create: body.postDetail,
+        },
       },
     });
     res.status(200).json(newPost);
