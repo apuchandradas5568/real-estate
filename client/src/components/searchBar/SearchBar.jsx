@@ -6,7 +6,7 @@ const types = ["buy", "rent"];
 function SearchBar() {
   const [query, setQuery] = useState({
     type: "buy",
-    location: "",
+    city: "",
     minPrice: 0,
     maxPrice: 0,
   });
@@ -29,7 +29,7 @@ function SearchBar() {
         ))}
       </div>
       <form>
-        <input type="text" name="location" placeholder="City Location" />
+        <input type="text" name="city" placeholder="City Location" />
         <input
           type="number"
           name="minPrice"
