@@ -12,7 +12,7 @@ function NewPostPage() {
   const [error, setError] = useState("");
   let navigate = useNavigate();
 
-  // 2:51
+
 
   console.log(images);
 
