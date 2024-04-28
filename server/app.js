@@ -24,3 +24,6 @@ app.use("/api/test", testRoutes)
 app.listen(8080, ()=>{
     console.log("server is running on port 8080");
 })
+
+
+// 3:52

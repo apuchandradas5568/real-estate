@@ -10,5 +10,5 @@ function List({posts}){
     </div>
   )
 }
-// 3:04
+
 export default List

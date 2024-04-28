@@ -17,6 +17,7 @@ function ProfilePage() {
   const data = useLoaderData();
 
 
+  console.log(data);
 
   const handleLogout = async () => {
     try {

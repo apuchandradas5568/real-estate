@@ -12,10 +12,6 @@ function NewPostPage() {
   const [error, setError] = useState("");
   let navigate = useNavigate();
 
-
-
-  console.log(images);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
